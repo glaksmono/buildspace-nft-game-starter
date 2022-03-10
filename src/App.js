@@ -7,6 +7,31 @@ const TWITTER_HANDLE = '_buildspace';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
 const App = () => {
+  /*
+   * Start by creating a new action that we will run on component load
+   */
+  // Actions
+  const checkIfWalletIsConnected = () => {
+    /*
+     * First make sure we have access to window.ethereum
+     */
+    const { ethereum } = window;
+
+    if (!ethereum) {
+      console.log('Make sure you have MetaMask!');
+      return;
+    } else {
+      console.log('We have the ethereum object', ethereum);
+    }
+  };
+
+  /*
+   * This runs our function when the page loads.
+   */
+  useEffect(() => {
+    checkIfWalletIsConnected();
+  }, []);
+  
   return (
     <div className="App">
       <div className="container">
