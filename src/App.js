@@ -69,7 +69,7 @@ const renderContent = () => {
     /*
      * Scenario #2
      */
-  } else if (currentAccount && !characterNFT) {
+  } else if (currentAccount) {
     return <SelectCharacter setCharacterNFT={setCharacterNFT} />;
   }
 };
