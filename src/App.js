@@ -3,9 +3,11 @@ import { ethers } from 'ethers';
 
 import './App.css';
 import twitterLogo from './assets/twitter-logo.svg';
+
 import { CONTRACT_ADDRESS, transformCharacterData } from './constants';
 import myEpicGame from './utils/MyEpicGame.json';
 import SelectCharacter from './Components/SelectCharacter';
+import Arena from './Components/Arena';
 
 // Constants
 const TWITTER_HANDLE = '_buildspace';
