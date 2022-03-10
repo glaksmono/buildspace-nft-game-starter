@@ -11,6 +11,22 @@ const SelectCharacter = ({ setCharacterNFT }) => {
     const [characters, setCharacters] = useState([]);
     const [gameContract, setGameContract] = useState(null);
 
+    // Render Methods
+    const renderCharacters = () =>
+    characters.map((character, index) => (
+        <div className="character-item" key={character.name}>
+        <div className="name-container">
+            <p>{character.name}</p>
+        </div>
+        <img src={character.imageURI} alt={character.name} />
+        <button
+            type="button"
+            className="character-mint-button"
+            onClick={()=> mintCharacterNFTAction(index)}
+        >{`Mint ${character.name}`}</button>
+        </div>
+    ));
+
     // UseEffect
     useEffect(() => {
         const { ethereum } = window;
@@ -69,8 +85,12 @@ const SelectCharacter = ({ setCharacterNFT }) => {
       }, [gameContract]);
   
     return (
-      <div className="select-character-container">
+        <div className="select-character-container">
         <h2>Mint Your Hero. Choose wisely.</h2>
+        {/* Only show this when there are characters in state */}
+        {characters.length > 0 && (
+          <div className="character-grid">{renderCharacters()}</div>
+        )}
       </div>
     );
   };
