@@ -66,11 +66,13 @@ const renderContent = () => {
         </button>
       </div>
     );
-    /*
-     * Scenario #2
-     */
-  } else if (currentAccount) {
-    return <SelectCharacter setCharacterNFT={setCharacterNFT} />;
+  } else if (currentAccount && !characterNFT) {
+    return <SelectCharacter setCharacterNFT={setCharacterNFT} />;	
+	/*
+	* If there is a connected wallet and characterNFT, it's time to battle!
+	*/
+  } else if (currentAccount && characterNFT) {
+    return <Arena characterNFT={characterNFT} />;
   }
 };
 
